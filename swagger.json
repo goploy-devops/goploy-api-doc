@@ -1,0 +1,999 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "A web deployment system tool!",
+        "title": "Goploy",
+        "contact": {
+            "name": "zhenorzz",
+            "url": "https://github.com/zhenorzz/goploy",
+            "email": "zhenorzz@gmail.com"
+        },
+        "license": {
+            "name": "GPLv3",
+            "url": "https://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "version": "1.15.0"
+    },
+    "host": "127.0.0.1:3001",
+    "paths": {
+        "/deploy/fileCompare": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Deploy"
+                ],
+                "summary": "Compare the repository file with the server",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.FileCompare.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/api.FileCompare.FileCompareData"
+                            }
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/deploy/fileDiff": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Deploy"
+                ],
+                "summary": "Show the different between the repository file and the server",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.FileDiff.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/api.FileDiff.RespData"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/deploy/getList": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Deploy"
+                ],
+                "summary": "List deploy projects",
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/api.GetList.RespData"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/deploy/getPreview": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Deploy"
+                ],
+                "summary": "List all deployed preview",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "branch",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "commit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "commitDate",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "deployDate",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "filename",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "projectID",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "rows",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "state",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "token",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "total",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "userID",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/api.GetPreview.RespData"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/deploy/getPublishTrace": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Deploy"
+                ],
+                "summary": "Show a publishing trace",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "last publish token",
+                        "name": "lastPublishToken",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/api.GetPublishTrace.RespData"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/deploy/getPublishTraceDetail": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Deploy"
+                ],
+                "summary": "Show a publishing trace detail",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "publish trace id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/api.GetPublishTraceDetail.RespData"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/deploy/greyPublish": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Deploy"
+                ],
+                "summary": "Publish the project on the selected servers",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.GreyPublish.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/deploy/manageProcess": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Deploy"
+                ],
+                "summary": "Manage the server process",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.ManageProcess.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/api.ManageProcess.RespData"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/deploy/publish": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Deploy"
+                ],
+                "summary": "Publish the project",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.Publish.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/deploy/rebuild": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Deploy"
+                ],
+                "summary": "Rollback the project",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.Publish.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/deploy/resetState": {
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Deploy"
+                ],
+                "summary": "Resets the project deploy state",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.ResetState.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/deploy/review": {
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Deploy"
+                ],
+                "summary": "Review the project",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.Review.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "api.FileCompare.FileCompareData": {
+            "type": "object",
+            "properties": {
+                "isModified": {
+                    "type": "boolean"
+                },
+                "serverIP": {
+                    "type": "string"
+                },
+                "serverId": {
+                    "type": "integer"
+                },
+                "serverName": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.FileCompare.ReqData": {
+            "type": "object",
+            "required": [
+                "filePath"
+            ],
+            "properties": {
+                "filePath": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.FileDiff.ReqData": {
+            "type": "object",
+            "required": [
+                "filePath"
+            ],
+            "properties": {
+                "filePath": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "integer"
+                },
+                "serverId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.FileDiff.RespData": {
+            "type": "object",
+            "properties": {
+                "distText": {
+                    "type": "string"
+                },
+                "srcText": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.GetList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.Project"
+                    }
+                }
+            }
+        },
+        "api.GetPreview.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.PublishTrace"
+                    }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/model.Pagination"
+                }
+            }
+        },
+        "api.GetPublishTrace.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.PublishTrace"
+                    }
+                }
+            }
+        },
+        "api.GetPublishTraceDetail.RespData": {
+            "type": "object",
+            "properties": {
+                "detail": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.GreyPublish.ReqData": {
+            "type": "object",
+            "properties": {
+                "branch": {
+                    "type": "string"
+                },
+                "commit": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "integer"
+                },
+                "serverIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        "api.ManageProcess.ReqData": {
+            "type": "object",
+            "required": [
+                "command"
+            ],
+            "properties": {
+                "command": {
+                    "type": "string"
+                },
+                "projectProcessId": {
+                    "type": "integer"
+                },
+                "serverId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.ManageProcess.RespData": {
+            "type": "object",
+            "properties": {
+                "execRes": {
+                    "type": "boolean"
+                },
+                "stderr": {
+                    "type": "string"
+                },
+                "stdout": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.Publish.ReqData": {
+            "type": "object",
+            "properties": {
+                "branch": {
+                    "type": "string"
+                },
+                "commit": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.ResetState.ReqData": {
+            "type": "object",
+            "properties": {
+                "projectId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.Review.ReqData": {
+            "type": "object",
+            "properties": {
+                "projectReviewId": {
+                    "type": "integer"
+                },
+                "state": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.Pagination": {
+            "type": "object",
+            "properties": {
+                "page": {
+                    "type": "integer"
+                },
+                "rows": {
+                    "type": "integer"
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.Project": {
+            "type": "object",
+            "properties": {
+                "autoDeploy": {
+                    "type": "integer"
+                },
+                "branch": {
+                    "type": "string"
+                },
+                "deployServerMode": {
+                    "type": "string"
+                },
+                "deployState": {
+                    "type": "integer"
+                },
+                "environment": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "insertTime": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "lastPublishToken": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "namespaceId": {
+                    "type": "integer"
+                },
+                "notifyTarget": {
+                    "type": "string"
+                },
+                "notifyType": {
+                    "type": "integer"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "publishExt": {
+                    "type": "string"
+                },
+                "publisherId": {
+                    "type": "integer"
+                },
+                "publisherName": {
+                    "type": "string"
+                },
+                "repoType": {
+                    "type": "string"
+                },
+                "review": {
+                    "type": "integer"
+                },
+                "reviewURL": {
+                    "type": "string"
+                },
+                "script": {
+                    "$ref": "#/definitions/model.ProjectScript"
+                },
+                "state": {
+                    "type": "integer"
+                },
+                "symlinkBackupNumber": {
+                    "type": "integer"
+                },
+                "symlinkPath": {
+                    "type": "string"
+                },
+                "transferOption": {
+                    "type": "string"
+                },
+                "transferType": {
+                    "type": "string"
+                },
+                "updateTime": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.ProjectScript": {
+            "type": "object",
+            "properties": {
+                "afterDeploy": {
+                    "type": "object",
+                    "properties": {
+                        "content": {
+                            "type": "string"
+                        },
+                        "mode": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "afterPull": {
+                    "type": "object",
+                    "properties": {
+                        "content": {
+                            "type": "string"
+                        },
+                        "mode": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "deployFinish": {
+                    "type": "object",
+                    "properties": {
+                        "content": {
+                            "type": "string"
+                        },
+                        "mode": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "model.PublishTrace": {
+            "type": "object",
+            "properties": {
+                "detail": {
+                    "type": "string"
+                },
+                "ext": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "insertTime": {
+                    "type": "string"
+                },
+                "namespaceId": {
+                    "type": "integer"
+                },
+                "projectId": {
+                    "type": "integer"
+                },
+                "projectName": {
+                    "type": "string"
+                },
+                "publisherId": {
+                    "type": "integer"
+                },
+                "publisherName": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "integer"
+                },
+                "token": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "integer"
+                },
+                "updateTime": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "ApiKeyHeader": {
+            "type": "apiKey",
+            "name": "X-API-KEY",
+            "in": "header"
+        },
+        "ApiKeyQueryParam": {
+            "type": "apiKey",
+            "name": "api_key",
+            "in": "query"
+        },
+        "NamespaceHeader": {
+            "type": "apiKey",
+            "name": "G-N-ID",
+            "in": "query"
+        },
+        "NamespaceQueryParam": {
+            "type": "apiKey",
+            "name": "G-N-ID",
+            "in": "query"
+        }
+    },
+    "tags": [
+        {
+            "description": "the response type is response.JSON, code = 0 for success, otherwise error, see the message for more details.",
+            "name": "API"
+        }
+    ],
+    "externalDocs": {
+        "description": "Get started",
+        "url": "https://docs.goploy.icu/"
+    }
+}
