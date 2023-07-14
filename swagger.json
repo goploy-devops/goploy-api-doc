@@ -582,9 +582,1464 @@
                     }
                 }
             }
+        },
+        "/project/add": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Add a project",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.Add.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/addFile": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Add a file to the project",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.AddFile.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/api.AddFile.RespData"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/addProcess": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Add process to the project",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.AddProcess.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/api.AddProcess.RespData"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/addTask": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Add a task to the project",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.AddTask.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/api.AddTask.RespData"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/deleteProcess": {
+            "delete": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Delete the process from the project",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.DeleteProcess.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/edit": {
+            "put": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Edit the project",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.Edit.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/editFile": {
+            "put": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Edit the file to the project",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.EditFile.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/editProcess": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Edit the process in the project",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.EditProcess.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/getBindServerList": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "List all binding servers",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "project id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/api.GetBindServerList.RespData"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/getBindUserList": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "List all binding users",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "project id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/api.GetBindUserList.RespData"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/getLabelList": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "List all project's labels",
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/api.GetLabelList.RespData"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/getList": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "List all projects",
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/api.GetList.RespData"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/getProcessList": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "List all processes in the project",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "projectID",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "rows",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "total",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/api.GetProcessList.RespData"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/getProjectFileContent": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Show the project file content",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "project id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/api.GetProjectFileContent.RespData"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/getProjectFileList": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "List all project files",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "project id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/api.GetProjectFileList.RespData"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/getRemoteBranchList": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "List all remote branches",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "repoType",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "url",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/api.GetRemoteBranchList.RespData"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/getReposFileList": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "List repository files",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "path",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/api.GetReposFileList.fileInfo"
+                            }
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/getReviewList": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "List all reviews in the project",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "rows",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "total",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/api.GetReviewList.RespData"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/getTaskList": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "List all tasks in the project",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "rows",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "total",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/api.GetTaskList.RespData"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/pingRepos": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Ping the repository",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "repoType",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "url",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/remove": {
+            "delete": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Remove the project",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.Remove.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/removeFile": {
+            "delete": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Remove the file from the project",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.RemoveFile.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/removeTask": {
+            "delete": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Remove the task from the project",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.RemoveTask.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/setAutoDeploy": {
+            "put": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Update project set auto_deploy",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.SetAutoDeploy.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/uploadFile": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Upload a file to the project",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "filename",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "minimum": 0,
+                        "type": "integer",
+                        "name": "projectFileID",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "projectID",
+                        "in": "query"
+                    },
+                    {
+                        "type": "file",
+                        "description": "file",
+                        "name": "file",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/api.UploadFile.RespData"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/add": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Add a user",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "name",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/api.Add.RespData"
+                            }
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/changePassword": {
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Change the user password",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "newPwd",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "oldPwd",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/edit": {
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Edit the user",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "name",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/extLogin": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "External login",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.ExtLogin.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/api.ExtLogin.RespData"
+                            }
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/getList": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "List all users",
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/api.GetList.RespData"
+                            }
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/info": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Show logged-in user information",
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/api.Info.RespData"
+                            }
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/login": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Login",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.Login.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/api.Login.RespData"
+                            }
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/remove": {
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Remove the user",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "2": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
+        "api.Add.ReqData": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.Add.RespData": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.AddFile.ReqData": {
+            "type": "object",
+            "required": [
+                "content",
+                "filename"
+            ],
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "filename": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.AddFile.RespData": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.AddProcess.ReqData": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "integer"
+                },
+                "restart": {
+                    "type": "string"
+                },
+                "start": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "stop": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.AddProcess.RespData": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.AddTask.ReqData": {
+            "type": "object",
+            "required": [
+                "branch",
+                "commit",
+                "date"
+            ],
+            "properties": {
+                "branch": {
+                    "type": "string"
+                },
+                "commit": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.AddTask.RespData": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.DeleteProcess.ReqData": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.Edit.ReqData": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.EditFile.ReqData": {
+            "type": "object",
+            "required": [
+                "content"
+            ],
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.EditProcess.ReqData": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "restart": {
+                    "type": "string"
+                },
+                "start": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "stop": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.ExtLogin.ReqData": {
+            "type": "object",
+            "properties": {
+                "account": {
+                    "type": "string",
+                    "maxLength": 25,
+                    "minLength": 1
+                },
+                "time": {
+                    "type": "integer"
+                },
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.ExtLogin.RespData": {
+            "type": "object",
+            "properties": {
+                "namespaceList": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.Namespace"
+                    }
+                },
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
         "api.FileCompare.FileCompareData": {
             "type": "object",
             "properties": {
@@ -647,13 +2102,46 @@
                 }
             }
         },
+        "api.GetBindServerList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.ProjectServer"
+                    }
+                }
+            }
+        },
+        "api.GetBindUserList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.ProjectUser"
+                    }
+                }
+            }
+        },
+        "api.GetLabelList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
         "api.GetList.RespData": {
             "type": "object",
             "properties": {
                 "list": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/model.Project"
+                        "$ref": "#/definitions/model.User"
                     }
                 }
             }
@@ -669,6 +2157,36 @@
                 },
                 "pagination": {
                     "$ref": "#/definitions/model.Pagination"
+                }
+            }
+        },
+        "api.GetProcessList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.ProjectProcess"
+                    }
+                }
+            }
+        },
+        "api.GetProjectFileContent.RespData": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.GetProjectFileList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.ProjectFile"
+                    }
                 }
             }
         },
@@ -691,6 +2209,65 @@
                 }
             }
         },
+        "api.GetRemoteBranchList.RespData": {
+            "type": "object",
+            "properties": {
+                "branch": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "api.GetReposFileList.fileInfo": {
+            "type": "object",
+            "properties": {
+                "isDir": {
+                    "type": "boolean"
+                },
+                "modTime": {
+                    "type": "string"
+                },
+                "mode": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "size": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.GetReviewList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.ProjectReview"
+                    }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/model.Pagination"
+                }
+            }
+        },
+        "api.GetTaskList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.ProjectTask"
+                    }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/model.Pagination"
+                }
+            }
+        },
         "api.GreyPublish.ReqData": {
             "type": "object",
             "properties": {
@@ -708,6 +2285,69 @@
                     "items": {
                         "type": "integer"
                     }
+                }
+            }
+        },
+        "api.Info.RespData": {
+            "type": "object",
+            "properties": {
+                "namespace": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "permissionIds": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                },
+                "userInfo": {
+                    "type": "object",
+                    "properties": {
+                        "account": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "superManager": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "api.Login.ReqData": {
+            "type": "object",
+            "properties": {
+                "account": {
+                    "type": "string",
+                    "maxLength": 25,
+                    "minLength": 1
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.Login.RespData": {
+            "type": "object",
+            "properties": {
+                "namespaceList": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.Namespace"
+                    }
+                },
+                "token": {
+                    "type": "string"
                 }
             }
         },
@@ -756,6 +2396,30 @@
                 }
             }
         },
+        "api.Remove.ReqData": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.RemoveFile.ReqData": {
+            "type": "object",
+            "properties": {
+                "projectFileId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.RemoveTask.ReqData": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
         "api.ResetState.ReqData": {
             "type": "object",
             "properties": {
@@ -775,6 +2439,52 @@
                 }
             }
         },
+        "api.SetAutoDeploy.ReqData": {
+            "type": "object",
+            "properties": {
+                "autoDeploy": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.UploadFile.RespData": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.Namespace": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "insertTime": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "permissionIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "role_id": {
+                    "type": "integer"
+                },
+                "updateTime": {
+                    "type": "string"
+                }
+            }
+        },
         "model.Pagination": {
             "type": "object",
             "properties": {
@@ -789,22 +2499,77 @@
                 }
             }
         },
-        "model.Project": {
+        "model.ProjectFile": {
             "type": "object",
             "properties": {
-                "autoDeploy": {
+                "filename": {
+                    "type": "string"
+                },
+                "id": {
                     "type": "integer"
                 },
+                "insertTime": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "integer"
+                },
+                "updateTime": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.ProjectProcess": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "insertTime": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "integer"
+                },
+                "restart": {
+                    "type": "string"
+                },
+                "start": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "stop": {
+                    "type": "string"
+                },
+                "updateTime": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.ProjectReview": {
+            "type": "object",
+            "properties": {
                 "branch": {
                     "type": "string"
                 },
-                "deployServerMode": {
+                "commitId": {
                     "type": "string"
                 },
-                "deployState": {
+                "creator": {
+                    "type": "string"
+                },
+                "creatorId": {
                     "type": "integer"
                 },
-                "environment": {
+                "editor": {
+                    "type": "string"
+                },
+                "editorId": {
                     "type": "integer"
                 },
                 "id": {
@@ -813,109 +2578,149 @@
                 "insertTime": {
                     "type": "string"
                 },
-                "label": {
-                    "type": "string"
-                },
-                "lastPublishToken": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "namespaceId": {
-                    "type": "integer"
-                },
-                "notifyTarget": {
-                    "type": "string"
-                },
-                "notifyType": {
-                    "type": "integer"
-                },
-                "path": {
-                    "type": "string"
-                },
-                "publishExt": {
-                    "type": "string"
-                },
-                "publisherId": {
-                    "type": "integer"
-                },
-                "publisherName": {
-                    "type": "string"
-                },
-                "repoType": {
-                    "type": "string"
-                },
-                "review": {
+                "projectId": {
                     "type": "integer"
                 },
                 "reviewURL": {
                     "type": "string"
                 },
-                "script": {
-                    "$ref": "#/definitions/model.ProjectScript"
+                "state": {
+                    "type": "integer"
+                },
+                "updateTime": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.ProjectServer": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "insertTime": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "integer"
+                },
+                "serverDescription": {
+                    "type": "string"
+                },
+                "serverIP": {
+                    "type": "string"
+                },
+                "serverId": {
+                    "type": "integer"
+                },
+                "serverJumpIP": {
+                    "type": "string"
+                },
+                "serverJumpOwner": {
+                    "type": "string"
+                },
+                "serverJumpPassword": {
+                    "type": "string"
+                },
+                "serverJumpPath": {
+                    "type": "string"
+                },
+                "serverJumpPort": {
+                    "type": "integer"
+                },
+                "serverName": {
+                    "type": "string"
+                },
+                "serverOS": {
+                    "type": "string"
+                },
+                "serverOwner": {
+                    "type": "string"
+                },
+                "serverPassword": {
+                    "type": "string"
+                },
+                "serverPath": {
+                    "type": "string"
+                },
+                "serverPort": {
+                    "type": "integer"
+                },
+                "updateTime": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.ProjectTask": {
+            "type": "object",
+            "properties": {
+                "branch": {
+                    "type": "string"
+                },
+                "commit": {
+                    "type": "string"
+                },
+                "creator": {
+                    "type": "string"
+                },
+                "creatorId": {
+                    "type": "integer"
+                },
+                "date": {
+                    "type": "string"
+                },
+                "editor": {
+                    "type": "string"
+                },
+                "editorId": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "insertTime": {
+                    "type": "string"
+                },
+                "isRun": {
+                    "type": "integer"
+                },
+                "projectId": {
+                    "type": "integer"
                 },
                 "state": {
                     "type": "integer"
                 },
-                "symlinkBackupNumber": {
+                "updateTime": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.ProjectUser": {
+            "type": "object",
+            "properties": {
+                "id": {
                     "type": "integer"
                 },
-                "symlinkPath": {
+                "insertTime": {
                     "type": "string"
                 },
-                "transferOption": {
-                    "type": "string"
+                "namespaceId": {
+                    "type": "integer"
                 },
-                "transferType": {
+                "projectId": {
+                    "type": "integer"
+                },
+                "projectName": {
                     "type": "string"
                 },
                 "updateTime": {
                     "type": "string"
                 },
-                "url": {
-                    "type": "string"
-                },
                 "userId": {
                     "type": "integer"
-                }
-            }
-        },
-        "model.ProjectScript": {
-            "type": "object",
-            "properties": {
-                "afterDeploy": {
-                    "type": "object",
-                    "properties": {
-                        "content": {
-                            "type": "string"
-                        },
-                        "mode": {
-                            "type": "string"
-                        }
-                    }
                 },
-                "afterPull": {
-                    "type": "object",
-                    "properties": {
-                        "content": {
-                            "type": "string"
-                        },
-                        "mode": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "deployFinish": {
-                    "type": "object",
-                    "properties": {
-                        "content": {
-                            "type": "string"
-                        },
-                        "mode": {
-                            "type": "string"
-                        }
-                    }
+                "userName": {
+                    "type": "string"
                 }
             }
         },
@@ -962,6 +2767,44 @@
                     "type": "string"
                 }
             }
+        },
+        "model.User": {
+            "type": "object",
+            "properties": {
+                "account": {
+                    "type": "string"
+                },
+                "apiKey": {
+                    "type": "string"
+                },
+                "contact": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "insertTime": {
+                    "type": "string"
+                },
+                "lastLoginTime": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "integer"
+                },
+                "superManager": {
+                    "type": "integer"
+                },
+                "updateTime": {
+                    "type": "string"
+                }
+            }
         }
     },
     "securityDefinitions": {
@@ -972,7 +2815,7 @@
         },
         "ApiKeyQueryParam": {
             "type": "apiKey",
-            "name": "api_key",
+            "name": "X-API-KEY",
             "in": "query"
         },
         "NamespaceHeader": {
@@ -988,7 +2831,7 @@
     },
     "tags": [
         {
-            "description": "the response type is response.JSON, code = 0 for success, otherwise error, see the message for more details.",
+            "description": "the response type is response.JSON, code=0(success), code=1(deny), code=2(error), code=10000(AccountDisabled), code=10001(IllegalRequest), code=10002(NamespaceInvalid), code=10003(IllegalParam), code=10086(LoginExpired)",
             "name": "API"
         }
     ],
