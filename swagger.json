@@ -12,7 +12,7 @@
             "name": "GPLv3",
             "url": "https://www.gnu.org/licenses/gpl-3.0.html"
         },
-        "version": "1.15.0"
+        "version": "1.15.1"
     },
     "host": "127.0.0.1:3001",
     "paths": {
@@ -40,24 +40,27 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.FileCompare.ReqData"
+                            "$ref": "#/definitions/deploy.FileCompare.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/api.FileCompare.FileCompareData"
-                            }
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/deploy.FileCompare.FileCompareData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -87,21 +90,27 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.FileDiff.ReqData"
+                            "$ref": "#/definitions/deploy.FileDiff.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.FileDiff.RespData"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/deploy.FileDiff.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -125,16 +134,22 @@
                 ],
                 "summary": "List deploy projects",
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.GetList.RespData"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/deploy.GetList.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -220,16 +235,70 @@
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.GetPreview.RespData"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/deploy.GetPreview.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
-                    },
-                    "2": {
-                        "description": "",
+                    }
+                }
+            }
+        },
+        "/deploy/getPublishProgress": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Deploy"
+                ],
+                "summary": "Show the progress of the publishing project",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "last publish token",
+                        "name": "lastPublishToken",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/deploy.GetPublishProgress.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -262,16 +331,22 @@
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.GetPublishTrace.RespData"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/deploy.GetPublishTrace.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -304,16 +379,22 @@
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.GetPublishTraceDetail.RespData"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/deploy.GetPublishTraceDetail.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -343,21 +424,15 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.GreyPublish.ReqData"
+                            "$ref": "#/definitions/deploy.GreyPublish.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/response.JSON"
                         }
                     }
                 }
@@ -387,21 +462,27 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.ManageProcess.ReqData"
+                            "$ref": "#/definitions/deploy.ManageProcess.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.ManageProcess.RespData"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/deploy.ManageProcess.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -431,21 +512,27 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.Publish.ReqData"
+                            "$ref": "#/definitions/deploy.Publish.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/deploy.Publish.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -475,21 +562,15 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.Publish.ReqData"
+                            "$ref": "#/definitions/deploy.Publish.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/response.JSON"
                         }
                     }
                 }
@@ -519,21 +600,15 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.ResetState.ReqData"
+                            "$ref": "#/definitions/deploy.ResetState.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/response.JSON"
                         }
                     }
                 }
@@ -563,21 +638,343 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.Review.ReqData"
+                            "$ref": "#/definitions/deploy.Review.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/response.JSON"
                         }
-                    },
-                    "2": {
-                        "description": "",
+                    }
+                }
+            }
+        },
+        "/namespace/add": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Namespace"
+                ],
+                "summary": "Add a namespace",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/namespace.Add.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/namespace.Add.RespData"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/namespace/addUser": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Namespace"
+                ],
+                "summary": "Add a user",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/namespace.AddUser.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.JSON"
+                        }
+                    }
+                }
+            }
+        },
+        "/namespace/edit": {
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Namespace"
+                ],
+                "summary": "Edit the namespace",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/namespace.Edit.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.JSON"
+                        }
+                    }
+                }
+            }
+        },
+        "/namespace/getBindUserList": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Namespace"
+                ],
+                "summary": "List namespaces by namespace id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/namespace.GetBindUserList.RespData"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/namespace/getList": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Namespace"
+                ],
+                "summary": "List namespaces",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/namespace.GetList.RespData"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/namespace/getOption": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Namespace"
+                ],
+                "summary": "List namespaces by user id",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/namespace.GetOption.RespData"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/namespace/getUserOption": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Namespace"
+                ],
+                "summary": "List namespaces by namespace id",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/namespace.GetUserOption.RespData"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/namespace/removeUser": {
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Namespace"
+                ],
+                "summary": "Remove the user",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/namespace.RemoveUser.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.JSON"
                         }
                     }
                 }
@@ -599,21 +996,15 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.Add.ReqData"
+                            "$ref": "#/definitions/project.Add.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/response.JSON"
                         }
                     }
                 }
@@ -635,21 +1026,27 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.AddFile.ReqData"
+                            "$ref": "#/definitions/project.AddFile.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.AddFile.RespData"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/project.AddFile.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -671,21 +1068,27 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.AddProcess.ReqData"
+                            "$ref": "#/definitions/project.AddProcess.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.AddProcess.RespData"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/project.AddProcess.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -707,21 +1110,27 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.AddTask.ReqData"
+                            "$ref": "#/definitions/project.AddTask.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.AddTask.RespData"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/project.AddTask.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -743,21 +1152,15 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.DeleteProcess.ReqData"
+                            "$ref": "#/definitions/project.DeleteProcess.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/response.JSON"
                         }
                     }
                 }
@@ -779,21 +1182,15 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.Edit.ReqData"
+                            "$ref": "#/definitions/project.Edit.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/response.JSON"
                         }
                     }
                 }
@@ -815,21 +1212,15 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.EditFile.ReqData"
+                            "$ref": "#/definitions/project.EditFile.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/response.JSON"
                         }
                     }
                 }
@@ -851,21 +1242,15 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.EditProcess.ReqData"
+                            "$ref": "#/definitions/project.EditProcess.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/response.JSON"
                         }
                     }
                 }
@@ -890,16 +1275,22 @@
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.GetBindServerList.RespData"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/project.GetBindServerList.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -924,16 +1315,22 @@
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.GetBindUserList.RespData"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/project.GetBindUserList.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -949,16 +1346,22 @@
                 ],
                 "summary": "List all project's labels",
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.GetLabelList.RespData"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/project.GetLabelList.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -974,16 +1377,22 @@
                 ],
                 "summary": "List all projects",
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.GetList.RespData"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/project.GetList.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -1007,7 +1416,8 @@
                     {
                         "type": "integer",
                         "name": "projectID",
-                        "in": "query"
+                        "in": "query",
+                        "required": true
                     },
                     {
                         "type": "integer",
@@ -1021,16 +1431,22 @@
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.GetProcessList.RespData"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/project.GetProcessList.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -1055,16 +1471,22 @@
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.GetProjectFileContent.RespData"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/project.GetProjectFileContent.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -1089,16 +1511,22 @@
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.GetProjectFileList.RespData"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/project.GetProjectFileList.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -1128,16 +1556,22 @@
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.GetRemoteBranchList.RespData"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/project.GetRemoteBranchList.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -1156,7 +1590,8 @@
                     {
                         "type": "integer",
                         "name": "id",
-                        "in": "query"
+                        "in": "query",
+                        "required": true
                     },
                     {
                         "type": "string",
@@ -1166,19 +1601,25 @@
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/api.GetReposFileList.fileInfo"
-                            }
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/project.GetReposFileList.fileInfo"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -1197,7 +1638,8 @@
                     {
                         "type": "integer",
                         "name": "id",
-                        "in": "query"
+                        "in": "query",
+                        "required": true
                     },
                     {
                         "type": "integer",
@@ -1216,16 +1658,22 @@
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.GetReviewList.RespData"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/project.GetReviewList.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -1244,7 +1692,8 @@
                     {
                         "type": "integer",
                         "name": "id",
-                        "in": "query"
+                        "in": "query",
+                        "required": true
                     },
                     {
                         "type": "integer",
@@ -1263,16 +1712,22 @@
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.GetTaskList.RespData"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/project.GetTaskList.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -1302,16 +1757,10 @@
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/response.JSON"
                         }
                     }
                 }
@@ -1333,21 +1782,15 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.Remove.ReqData"
+                            "$ref": "#/definitions/project.Remove.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/response.JSON"
                         }
                     }
                 }
@@ -1369,21 +1812,15 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.RemoveFile.ReqData"
+                            "$ref": "#/definitions/project.RemoveFile.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/response.JSON"
                         }
                     }
                 }
@@ -1405,21 +1842,15 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.RemoveTask.ReqData"
+                            "$ref": "#/definitions/project.RemoveTask.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/response.JSON"
                         }
                     }
                 }
@@ -1441,21 +1872,15 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.SetAutoDeploy.ReqData"
+                            "$ref": "#/definitions/project.SetAutoDeploy.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/response.JSON"
                         }
                     }
                 }
@@ -1481,12 +1906,14 @@
                         "minimum": 0,
                         "type": "integer",
                         "name": "projectFileID",
-                        "in": "query"
+                        "in": "query",
+                        "required": true
                     },
                     {
                         "type": "integer",
                         "name": "projectID",
-                        "in": "query"
+                        "in": "query",
+                        "required": true
                     },
                     {
                         "type": "file",
@@ -1497,16 +1924,489 @@
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.UploadFile.RespData"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/project.UploadFile.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
-                    },
-                    "2": {
-                        "description": "",
+                    }
+                }
+            }
+        },
+        "/repository/getBranchList": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Repository"
+                ],
+                "summary": "List branches",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/repository.GetBranchList.RespData"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/repository/getCommitList": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Repository"
+                ],
+                "summary": "List latest 10 commits",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "branch",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/repository.GetCommitList.RespData"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/repository/getTagList": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Repository"
+                ],
+                "summary": "List latest 10 tags",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/repository.GetTagList.RespData"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/role/add": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "Add a role",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/role.Add.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/role.Add.RespData"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/role/changePermission": {
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "Change the role permissions",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/role.ChangePermission.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.JSON"
+                        }
+                    }
+                }
+            }
+        },
+        "/role/edit": {
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "Edit the role",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/role.Edit.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.JSON"
+                        }
+                    }
+                }
+            }
+        },
+        "/role/getList": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "List roles",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/role.GetList.RespData"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/role/getOption": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "List all roles",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/role.GetOption.RespData"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/role/getPermissionBindings": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "List role permissions",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/role.GetPermissionBindings.RespData"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/role/getPermissionList": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "List permissions",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/role.GetPermissionList.RespData"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/role/remove": {
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyHeader": [],
+                        "ApiKeyQueryParam": [],
+                        "NamespaceHeader": [],
+                        "NamespaceQueryParam": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Role"
+                ],
+                "summary": "Remove the role",
+                "parameters": [
+                    {
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/role.Remove.ReqData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.JSON"
                         }
                     }
                 }
@@ -1531,26 +2431,32 @@
                 "summary": "Add a user",
                 "parameters": [
                     {
-                        "type": "string",
-                        "name": "name",
-                        "in": "query",
-                        "required": true
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/user.Add.ReqData"
+                        }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/api.Add.RespData"
-                            }
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/user.Add.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -1575,27 +2481,20 @@
                 "summary": "Change the user password",
                 "parameters": [
                     {
-                        "type": "string",
-                        "name": "newPwd",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "name": "oldPwd",
-                        "in": "query"
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/user.ChangePassword.ReqData"
+                        }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/response.JSON"
                         }
                     }
                 }
@@ -1620,28 +2519,20 @@
                 "summary": "Edit the user",
                 "parameters": [
                     {
-                        "type": "integer",
-                        "name": "id",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "name": "name",
-                        "in": "query",
-                        "required": true
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/user.Edit.ReqData"
+                        }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/response.JSON"
                         }
                     }
                 }
@@ -1663,24 +2554,27 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.ExtLogin.ReqData"
+                            "$ref": "#/definitions/user.ExtLogin.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/api.ExtLogin.RespData"
-                            }
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/user.ExtLogin.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -1704,19 +2598,22 @@
                 ],
                 "summary": "List all users",
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/api.GetList.RespData"
-                            }
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/user.GetList.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -1740,19 +2637,22 @@
                 ],
                 "summary": "Show logged-in user information",
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/api.Info.RespData"
-                            }
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/user.Info.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -1774,24 +2674,27 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/api.Login.ReqData"
+                            "$ref": "#/definitions/user.Login.ReqData"
                         }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/api.Login.RespData"
-                            }
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.JSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/user.Login.RespData"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -1816,22 +2719,20 @@
                 "summary": "Remove the user",
                 "parameters": [
                     {
-                        "type": "integer",
-                        "name": "id",
-                        "in": "query"
+                        "description": "body params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/user.Remove.ReqData"
+                        }
                     }
                 ],
                 "responses": {
-                    "0": {
-                        "description": "",
+                    "200": {
+                        "description": "OK",
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "2": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/response.JSON"
                         }
                     }
                 }
@@ -1839,208 +2740,7 @@
         }
     },
     "definitions": {
-        "api.Add.ReqData": {
-            "type": "object",
-            "required": [
-                "name"
-            ],
-            "properties": {
-                "name": {
-                    "type": "string"
-                }
-            }
-        },
-        "api.Add.RespData": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "integer"
-                }
-            }
-        },
-        "api.AddFile.ReqData": {
-            "type": "object",
-            "required": [
-                "content",
-                "filename"
-            ],
-            "properties": {
-                "content": {
-                    "type": "string"
-                },
-                "filename": {
-                    "type": "string"
-                },
-                "projectId": {
-                    "type": "integer"
-                }
-            }
-        },
-        "api.AddFile.RespData": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "integer"
-                }
-            }
-        },
-        "api.AddProcess.ReqData": {
-            "type": "object",
-            "required": [
-                "name"
-            ],
-            "properties": {
-                "name": {
-                    "type": "string"
-                },
-                "projectId": {
-                    "type": "integer"
-                },
-                "restart": {
-                    "type": "string"
-                },
-                "start": {
-                    "type": "string"
-                },
-                "status": {
-                    "type": "string"
-                },
-                "stop": {
-                    "type": "string"
-                }
-            }
-        },
-        "api.AddProcess.RespData": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "integer"
-                }
-            }
-        },
-        "api.AddTask.ReqData": {
-            "type": "object",
-            "required": [
-                "branch",
-                "commit",
-                "date"
-            ],
-            "properties": {
-                "branch": {
-                    "type": "string"
-                },
-                "commit": {
-                    "type": "string"
-                },
-                "date": {
-                    "type": "string"
-                },
-                "projectId": {
-                    "type": "integer"
-                }
-            }
-        },
-        "api.AddTask.RespData": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "integer"
-                }
-            }
-        },
-        "api.DeleteProcess.ReqData": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "integer"
-                }
-            }
-        },
-        "api.Edit.ReqData": {
-            "type": "object",
-            "required": [
-                "name"
-            ],
-            "properties": {
-                "id": {
-                    "type": "integer"
-                },
-                "name": {
-                    "type": "string"
-                }
-            }
-        },
-        "api.EditFile.ReqData": {
-            "type": "object",
-            "required": [
-                "content"
-            ],
-            "properties": {
-                "content": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "integer"
-                }
-            }
-        },
-        "api.EditProcess.ReqData": {
-            "type": "object",
-            "required": [
-                "name"
-            ],
-            "properties": {
-                "id": {
-                    "type": "integer"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "restart": {
-                    "type": "string"
-                },
-                "start": {
-                    "type": "string"
-                },
-                "status": {
-                    "type": "string"
-                },
-                "stop": {
-                    "type": "string"
-                }
-            }
-        },
-        "api.ExtLogin.ReqData": {
-            "type": "object",
-            "properties": {
-                "account": {
-                    "type": "string",
-                    "maxLength": 25,
-                    "minLength": 1
-                },
-                "time": {
-                    "type": "integer"
-                },
-                "token": {
-                    "type": "string"
-                }
-            }
-        },
-        "api.ExtLogin.RespData": {
-            "type": "object",
-            "properties": {
-                "namespaceList": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/model.Namespace"
-                    }
-                },
-                "token": {
-                    "type": "string"
-                }
-            }
-        },
-        "api.FileCompare.FileCompareData": {
+        "deploy.FileCompare.FileCompareData": {
             "type": "object",
             "properties": {
                 "isModified": {
@@ -2060,10 +2760,11 @@
                 }
             }
         },
-        "api.FileCompare.ReqData": {
+        "deploy.FileCompare.ReqData": {
             "type": "object",
             "required": [
-                "filePath"
+                "filePath",
+                "projectId"
             ],
             "properties": {
                 "filePath": {
@@ -2074,10 +2775,12 @@
                 }
             }
         },
-        "api.FileDiff.ReqData": {
+        "deploy.FileDiff.ReqData": {
             "type": "object",
             "required": [
-                "filePath"
+                "filePath",
+                "projectId",
+                "serverId"
             ],
             "properties": {
                 "filePath": {
@@ -2091,7 +2794,7 @@
                 }
             }
         },
-        "api.FileDiff.RespData": {
+        "deploy.FileDiff.RespData": {
             "type": "object",
             "properties": {
                 "distText": {
@@ -2102,51 +2805,18 @@
                 }
             }
         },
-        "api.GetBindServerList.RespData": {
+        "deploy.GetList.RespData": {
             "type": "object",
             "properties": {
                 "list": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/model.ProjectServer"
+                        "$ref": "#/definitions/model.Project"
                     }
                 }
             }
         },
-        "api.GetBindUserList.RespData": {
-            "type": "object",
-            "properties": {
-                "list": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/model.ProjectUser"
-                    }
-                }
-            }
-        },
-        "api.GetLabelList.RespData": {
-            "type": "object",
-            "properties": {
-                "list": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                }
-            }
-        },
-        "api.GetList.RespData": {
-            "type": "object",
-            "properties": {
-                "list": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/model.User"
-                    }
-                }
-            }
-        },
-        "api.GetPreview.RespData": {
+        "deploy.GetPreview.RespData": {
             "type": "object",
             "properties": {
                 "list": {
@@ -2160,37 +2830,21 @@
                 }
             }
         },
-        "api.GetProcessList.RespData": {
+        "deploy.GetPublishProgress.RespData": {
             "type": "object",
             "properties": {
-                "list": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/model.ProjectProcess"
-                    }
-                }
-            }
-        },
-        "api.GetProjectFileContent.RespData": {
-            "type": "object",
-            "properties": {
-                "content": {
+                "message": {
                     "type": "string"
+                },
+                "stage": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "integer"
                 }
             }
         },
-        "api.GetProjectFileList.RespData": {
-            "type": "object",
-            "properties": {
-                "list": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/model.ProjectFile"
-                    }
-                }
-            }
-        },
-        "api.GetPublishTrace.RespData": {
+        "deploy.GetPublishTrace.RespData": {
             "type": "object",
             "properties": {
                 "list": {
@@ -2201,7 +2855,7 @@
                 }
             }
         },
-        "api.GetPublishTraceDetail.RespData": {
+        "deploy.GetPublishTraceDetail.RespData": {
             "type": "object",
             "properties": {
                 "detail": {
@@ -2209,67 +2863,11 @@
                 }
             }
         },
-        "api.GetRemoteBranchList.RespData": {
+        "deploy.GreyPublish.ReqData": {
             "type": "object",
-            "properties": {
-                "branch": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                }
-            }
-        },
-        "api.GetReposFileList.fileInfo": {
-            "type": "object",
-            "properties": {
-                "isDir": {
-                    "type": "boolean"
-                },
-                "modTime": {
-                    "type": "string"
-                },
-                "mode": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "size": {
-                    "type": "integer"
-                }
-            }
-        },
-        "api.GetReviewList.RespData": {
-            "type": "object",
-            "properties": {
-                "list": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/model.ProjectReview"
-                    }
-                },
-                "pagination": {
-                    "$ref": "#/definitions/model.Pagination"
-                }
-            }
-        },
-        "api.GetTaskList.RespData": {
-            "type": "object",
-            "properties": {
-                "list": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/model.ProjectTask"
-                    }
-                },
-                "pagination": {
-                    "$ref": "#/definitions/model.Pagination"
-                }
-            }
-        },
-        "api.GreyPublish.ReqData": {
-            "type": "object",
+            "required": [
+                "projectId"
+            ],
             "properties": {
                 "branch": {
                     "type": "string"
@@ -2288,73 +2886,12 @@
                 }
             }
         },
-        "api.Info.RespData": {
-            "type": "object",
-            "properties": {
-                "namespace": {
-                    "type": "object",
-                    "properties": {
-                        "id": {
-                            "type": "integer"
-                        },
-                        "permissionIds": {
-                            "type": "array",
-                            "items": {
-                                "type": "integer"
-                            }
-                        }
-                    }
-                },
-                "userInfo": {
-                    "type": "object",
-                    "properties": {
-                        "account": {
-                            "type": "string"
-                        },
-                        "id": {
-                            "type": "integer"
-                        },
-                        "name": {
-                            "type": "string"
-                        },
-                        "superManager": {
-                            "type": "integer"
-                        }
-                    }
-                }
-            }
-        },
-        "api.Login.ReqData": {
-            "type": "object",
-            "properties": {
-                "account": {
-                    "type": "string",
-                    "maxLength": 25,
-                    "minLength": 1
-                },
-                "password": {
-                    "type": "string"
-                }
-            }
-        },
-        "api.Login.RespData": {
-            "type": "object",
-            "properties": {
-                "namespaceList": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/model.Namespace"
-                    }
-                },
-                "token": {
-                    "type": "string"
-                }
-            }
-        },
-        "api.ManageProcess.ReqData": {
+        "deploy.ManageProcess.ReqData": {
             "type": "object",
             "required": [
-                "command"
+                "command",
+                "projectProcessId",
+                "serverId"
             ],
             "properties": {
                 "command": {
@@ -2368,7 +2905,7 @@
                 }
             }
         },
-        "api.ManageProcess.RespData": {
+        "deploy.ManageProcess.RespData": {
             "type": "object",
             "properties": {
                 "execRes": {
@@ -2382,8 +2919,11 @@
                 }
             }
         },
-        "api.Publish.ReqData": {
+        "deploy.Publish.ReqData": {
             "type": "object",
+            "required": [
+                "projectId"
+            ],
             "properties": {
                 "branch": {
                     "type": "string"
@@ -2396,65 +2936,36 @@
                 }
             }
         },
-        "api.Remove.ReqData": {
+        "deploy.Publish.RespData": {
             "type": "object",
             "properties": {
-                "id": {
-                    "type": "integer"
+                "token": {
+                    "type": "string"
                 }
             }
         },
-        "api.RemoveFile.ReqData": {
+        "deploy.ResetState.ReqData": {
             "type": "object",
-            "properties": {
-                "projectFileId": {
-                    "type": "integer"
-                }
-            }
-        },
-        "api.RemoveTask.ReqData": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "integer"
-                }
-            }
-        },
-        "api.ResetState.ReqData": {
-            "type": "object",
+            "required": [
+                "projectId"
+            ],
             "properties": {
                 "projectId": {
                     "type": "integer"
                 }
             }
         },
-        "api.Review.ReqData": {
+        "deploy.Review.ReqData": {
             "type": "object",
+            "required": [
+                "projectReviewId",
+                "state"
+            ],
             "properties": {
                 "projectReviewId": {
                     "type": "integer"
                 },
                 "state": {
-                    "type": "integer"
-                }
-            }
-        },
-        "api.SetAutoDeploy.ReqData": {
-            "type": "object",
-            "properties": {
-                "autoDeploy": {
-                    "type": "integer",
-                    "minimum": 0
-                },
-                "id": {
-                    "type": "integer"
-                }
-            }
-        },
-        "api.UploadFile.RespData": {
-            "type": "object",
-            "properties": {
-                "id": {
                     "type": "integer"
                 }
             }
@@ -2485,6 +2996,44 @@
                 }
             }
         },
+        "model.NamespaceUser": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "insertTime": {
+                    "type": "string"
+                },
+                "namespaceId": {
+                    "type": "integer"
+                },
+                "namespaceName": {
+                    "type": "string"
+                },
+                "permissionIds": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "object"
+                    }
+                },
+                "roleId": {
+                    "type": "integer"
+                },
+                "roleName": {
+                    "type": "string"
+                },
+                "updateTime": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "integer"
+                },
+                "userName": {
+                    "type": "string"
+                }
+            }
+        },
         "model.Pagination": {
             "type": "object",
             "properties": {
@@ -2495,6 +3044,124 @@
                     "type": "integer"
                 },
                 "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.Permission": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "insertTime": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "pid": {
+                    "type": "integer"
+                },
+                "sort": {
+                    "type": "integer"
+                },
+                "updateTime": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.Project": {
+            "type": "object",
+            "properties": {
+                "autoDeploy": {
+                    "type": "integer"
+                },
+                "branch": {
+                    "type": "string"
+                },
+                "deployServerMode": {
+                    "type": "string"
+                },
+                "deployState": {
+                    "type": "integer"
+                },
+                "environment": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "insertTime": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "lastPublishToken": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "namespaceId": {
+                    "type": "integer"
+                },
+                "notifyTarget": {
+                    "type": "string"
+                },
+                "notifyType": {
+                    "type": "integer"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "publishExt": {
+                    "type": "string"
+                },
+                "publisherId": {
+                    "type": "integer"
+                },
+                "publisherName": {
+                    "type": "string"
+                },
+                "repoType": {
+                    "type": "string"
+                },
+                "review": {
+                    "type": "integer"
+                },
+                "reviewURL": {
+                    "type": "string"
+                },
+                "script": {
+                    "$ref": "#/definitions/model.ProjectScript"
+                },
+                "state": {
+                    "type": "integer"
+                },
+                "symlinkBackupNumber": {
+                    "type": "integer"
+                },
+                "symlinkPath": {
+                    "type": "string"
+                },
+                "transferOption": {
+                    "type": "string"
+                },
+                "transferType": {
+                    "type": "string"
+                },
+                "updateTime": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "userId": {
                     "type": "integer"
                 }
             }
@@ -2589,6 +3256,44 @@
                 },
                 "updateTime": {
                     "type": "string"
+                }
+            }
+        },
+        "model.ProjectScript": {
+            "type": "object",
+            "properties": {
+                "afterDeploy": {
+                    "type": "object",
+                    "properties": {
+                        "content": {
+                            "type": "string"
+                        },
+                        "mode": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "afterPull": {
+                    "type": "object",
+                    "properties": {
+                        "content": {
+                            "type": "string"
+                        },
+                        "mode": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "deployFinish": {
+                    "type": "object",
+                    "properties": {
+                        "content": {
+                            "type": "string"
+                        },
+                        "mode": {
+                            "type": "string"
+                        }
+                    }
                 }
             }
         },
@@ -2768,6 +3473,46 @@
                 }
             }
         },
+        "model.Role": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "insertTime": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "updateTime": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.RolePermission": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "insertTime": {
+                    "type": "string"
+                },
+                "permissionId": {
+                    "type": "integer"
+                },
+                "roleId": {
+                    "type": "integer"
+                },
+                "updateTime": {
+                    "type": "string"
+                }
+            }
+        },
         "model.User": {
             "type": "object",
             "properties": {
@@ -2805,6 +3550,996 @@
                     "type": "string"
                 }
             }
+        },
+        "namespace.Add.ReqData": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "namespace.Add.RespData": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "namespace.AddUser.ReqData": {
+            "type": "object",
+            "required": [
+                "namespaceId",
+                "roleId",
+                "userIds"
+            ],
+            "properties": {
+                "namespaceId": {
+                    "type": "integer"
+                },
+                "roleId": {
+                    "type": "integer"
+                },
+                "userIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        "namespace.Edit.ReqData": {
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "namespace.GetBindUserList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.NamespaceUser"
+                    }
+                }
+            }
+        },
+        "namespace.GetList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.Namespace"
+                    }
+                }
+            }
+        },
+        "namespace.GetOption.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.NamespaceUser"
+                    }
+                }
+            }
+        },
+        "namespace.GetUserOption.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.NamespaceUser"
+                    }
+                }
+            }
+        },
+        "namespace.RemoveUser.ReqData": {
+            "type": "object",
+            "required": [
+                "namespaceUserId"
+            ],
+            "properties": {
+                "namespaceUserId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "project.Add.ReqData": {
+            "type": "object",
+            "required": [
+                "branch",
+                "environment",
+                "name",
+                "path",
+                "repoType",
+                "url"
+            ],
+            "properties": {
+                "branch": {
+                    "type": "string"
+                },
+                "deployServerMode": {
+                    "type": "string"
+                },
+                "environment": {
+                    "type": "integer"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "notifyTarget": {
+                    "type": "string"
+                },
+                "notifyType": {
+                    "type": "integer"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "repoType": {
+                    "type": "string"
+                },
+                "review": {
+                    "type": "integer"
+                },
+                "reviewURL": {
+                    "type": "string"
+                },
+                "script": {
+                    "$ref": "#/definitions/model.ProjectScript"
+                },
+                "serverIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "symlinkBackupNumber": {
+                    "type": "integer"
+                },
+                "symlinkPath": {
+                    "type": "string"
+                },
+                "transferOption": {
+                    "type": "string"
+                },
+                "transferType": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "userIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        "project.AddFile.ReqData": {
+            "type": "object",
+            "required": [
+                "content",
+                "filename",
+                "projectId"
+            ],
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "filename": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "project.AddFile.RespData": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "project.AddProcess.ReqData": {
+            "type": "object",
+            "required": [
+                "name",
+                "projectId"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "integer"
+                },
+                "restart": {
+                    "type": "string"
+                },
+                "start": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "stop": {
+                    "type": "string"
+                }
+            }
+        },
+        "project.AddProcess.RespData": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "project.AddTask.ReqData": {
+            "type": "object",
+            "required": [
+                "branch",
+                "commit",
+                "date",
+                "projectId"
+            ],
+            "properties": {
+                "branch": {
+                    "type": "string"
+                },
+                "commit": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "project.AddTask.RespData": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "project.DeleteProcess.ReqData": {
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "project.Edit.ReqData": {
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "branch": {
+                    "type": "string"
+                },
+                "deployServerMode": {
+                    "type": "string"
+                },
+                "environment": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "notifyTarget": {
+                    "type": "string"
+                },
+                "notifyType": {
+                    "type": "integer"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "repoType": {
+                    "type": "string"
+                },
+                "review": {
+                    "type": "integer"
+                },
+                "reviewURL": {
+                    "type": "string"
+                },
+                "script": {
+                    "$ref": "#/definitions/model.ProjectScript"
+                },
+                "serverIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "symlinkBackupNumber": {
+                    "type": "integer"
+                },
+                "symlinkPath": {
+                    "type": "string"
+                },
+                "transferOption": {
+                    "type": "string"
+                },
+                "transferType": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "userIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        "project.EditFile.ReqData": {
+            "type": "object",
+            "required": [
+                "content",
+                "id"
+            ],
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "project.EditProcess.ReqData": {
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "restart": {
+                    "type": "string"
+                },
+                "start": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "stop": {
+                    "type": "string"
+                }
+            }
+        },
+        "project.GetBindServerList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.ProjectServer"
+                    }
+                }
+            }
+        },
+        "project.GetBindUserList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.ProjectUser"
+                    }
+                }
+            }
+        },
+        "project.GetLabelList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "project.GetList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.Project"
+                    }
+                }
+            }
+        },
+        "project.GetProcessList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.ProjectProcess"
+                    }
+                }
+            }
+        },
+        "project.GetProjectFileContent.RespData": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                }
+            }
+        },
+        "project.GetProjectFileList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.ProjectFile"
+                    }
+                }
+            }
+        },
+        "project.GetRemoteBranchList.RespData": {
+            "type": "object",
+            "properties": {
+                "branch": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "project.GetReposFileList.fileInfo": {
+            "type": "object",
+            "properties": {
+                "isDir": {
+                    "type": "boolean"
+                },
+                "modTime": {
+                    "type": "string"
+                },
+                "mode": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "size": {
+                    "type": "integer"
+                }
+            }
+        },
+        "project.GetReviewList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.ProjectReview"
+                    }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/model.Pagination"
+                }
+            }
+        },
+        "project.GetTaskList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.ProjectTask"
+                    }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/model.Pagination"
+                }
+            }
+        },
+        "project.Remove.ReqData": {
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "project.RemoveFile.ReqData": {
+            "type": "object",
+            "required": [
+                "projectFileId"
+            ],
+            "properties": {
+                "projectFileId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "project.RemoveTask.ReqData": {
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "project.SetAutoDeploy.ReqData": {
+            "type": "object",
+            "required": [
+                "autoDeploy",
+                "id"
+            ],
+            "properties": {
+                "autoDeploy": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "project.UploadFile.RespData": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "repo.CommitInfo": {
+            "type": "object",
+            "properties": {
+                "author": {
+                    "type": "string"
+                },
+                "branch": {
+                    "type": "string"
+                },
+                "commit": {
+                    "type": "string"
+                },
+                "diff": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                },
+                "timestamp": {
+                    "type": "integer"
+                }
+            }
+        },
+        "repository.GetBranchList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "repository.GetCommitList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/repo.CommitInfo"
+                    }
+                }
+            }
+        },
+        "repository.GetTagList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/repo.CommitInfo"
+                    }
+                }
+            }
+        },
+        "response.JSON": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "Pass = 0\nDeny = 1\nError = 2, see Message for details\nAccountDisabled  = 10000\nIllegalRequest = 10001\nNamespaceInvalid = 10002\nIllegalParam = 10003\nLoginExpired = 10086",
+                    "type": "integer"
+                },
+                "data": {},
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "role.Add.ReqData": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "maxLength": 255
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "role.Add.RespData": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "role.ChangePermission.ReqData": {
+            "type": "object",
+            "required": [
+                "permissionIds",
+                "roleId"
+            ],
+            "properties": {
+                "permissionIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "roleId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "role.Edit.ReqData": {
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "maxLength": 255
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "role.GetList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.Role"
+                    }
+                }
+            }
+        },
+        "role.GetOption.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.Role"
+                    }
+                }
+            }
+        },
+        "role.GetPermissionBindings.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.RolePermission"
+                    }
+                }
+            }
+        },
+        "role.GetPermissionList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.Permission"
+                    }
+                }
+            }
+        },
+        "role.Remove.ReqData": {
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "user.Add.ReqData": {
+            "type": "object",
+            "required": [
+                "account",
+                "name",
+                "superManager"
+            ],
+            "properties": {
+                "account": {
+                    "type": "string",
+                    "maxLength": 25,
+                    "minLength": 1
+                },
+                "contact": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "superManager": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ]
+                }
+            }
+        },
+        "user.Add.RespData": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "user.ChangePassword.ReqData": {
+            "type": "object",
+            "required": [
+                "newPwd",
+                "oldPwd"
+            ],
+            "properties": {
+                "newPwd": {
+                    "type": "string"
+                },
+                "oldPwd": {
+                    "type": "string"
+                }
+            }
+        },
+        "user.Edit.ReqData": {
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "superManager"
+            ],
+            "properties": {
+                "contact": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "superManager": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ]
+                }
+            }
+        },
+        "user.ExtLogin.ReqData": {
+            "type": "object",
+            "required": [
+                "account",
+                "token"
+            ],
+            "properties": {
+                "account": {
+                    "type": "string",
+                    "maxLength": 25,
+                    "minLength": 1
+                },
+                "time": {
+                    "type": "integer"
+                },
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "user.ExtLogin.RespData": {
+            "type": "object",
+            "properties": {
+                "namespaceList": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.Namespace"
+                    }
+                },
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "user.GetList.RespData": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.User"
+                    }
+                }
+            }
+        },
+        "user.Info.RespData": {
+            "type": "object",
+            "properties": {
+                "namespace": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "permissionIds": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                },
+                "userInfo": {
+                    "type": "object",
+                    "properties": {
+                        "account": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "superManager": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "user.Login.ReqData": {
+            "type": "object",
+            "required": [
+                "account",
+                "password"
+            ],
+            "properties": {
+                "account": {
+                    "type": "string",
+                    "maxLength": 25,
+                    "minLength": 1
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "user.Login.RespData": {
+            "type": "object",
+            "properties": {
+                "namespaceList": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.Namespace"
+                    }
+                },
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "user.Remove.ReqData": {
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
         }
     },
     "securityDefinitions": {
@@ -2829,12 +4564,6 @@
             "in": "query"
         }
     },
-    "tags": [
-        {
-            "description": "the response type is response.JSON, code=0(success), code=1(deny), code=2(error), code=10000(AccountDisabled), code=10001(IllegalRequest), code=10002(NamespaceInvalid), code=10003(IllegalParam), code=10086(LoginExpired)",
-            "name": "API"
-        }
-    ],
     "externalDocs": {
         "description": "Get started",
         "url": "https://docs.goploy.icu/"
